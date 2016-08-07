@@ -1,0 +1,25 @@
+<div layout="column" layout-align="center center" class="container" flex>
+	<form ng-submit='login()'>
+		<md-card>
+	        <md-card-title>
+	          	<md-card-title-text>
+		            <span class="md-headline">Login</span>
+	          	</md-card-title-text>
+	         </md-card-title>
+	         <md-card-content layout="column" layout-align="space-between">
+					<md-input-container>
+				       	<label>User Name</label>
+				       	<input md-autofocus required type="text" ng-model="username">
+				  	</md-input-container>
+				  	<md-input-container>
+				       	<label>Password</label>
+				       	<input md-autofocus type="password" required ng-model="password">
+				  	</md-input-container>
+	  			</form>
+	  		</md-card-content>
+	  		<md-card-actions layout="row" layout-align="end center">
+	          	<md-button class="md-raised md-primary" type="submit">Login</md-button>
+	        </md-card-actions>
+	    </md-card>
+	</form>
+</div>
