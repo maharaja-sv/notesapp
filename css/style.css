@@ -1,0 +1,112 @@
+.body{
+	font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+.container, .sideNavContent, md-sidenav, md-sidenav md-content, md-sidenav .md-subheader{
+	background-color: #e8e8e8;
+}
+md-card{
+	min-width: 350px;
+}
+md-sidenav{
+	max-width: 280px;
+}
+
+md-list-item{
+	cursor: pointer;
+}
+md-list-item.active{
+	background-color: #fafafa;
+}
+md-list-item:hover{
+	background-color: #f1f1f1;
+}
+.md-errors-spacer{
+	display: none;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../fonts/MaterialIcons-Regular.woff) format('woff'),
+       url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.md-button.icon-button.mini {
+    min-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    padding: 0;
+    margin: 0;
+    line-height: 15px;
+    border-radius: 50%;
+}
+
+md-chips .md-chips{
+	box-shadow: none;
+}
+.md-chips .md-chip{
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 0 12px;
+}
+.md-button.md-icon-button.mini{
+    width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    padding: 0;
+    margin: 0;
+}
+.notesContent{
+	display: block;
+}
+.notesContent > *{
+	float: left;
+}
+.full-width{
+	width: 100%;
+}
+.nil-margin{
+	margin: 0;
+}
+.hover .icon-button{
+	display: none;
+}
+.hover:hover .icon-button{
+	display: block;
+}
+.nil-vertical-padding{
+	padding-top: 0;
+	padding-bottom: 0;
+}
