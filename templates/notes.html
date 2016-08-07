@@ -1,0 +1,87 @@
+<div layout="column" class="noteList" flex layout-align="center center">
+    <md-card>
+		<form ng-submit="addNote()">
+	        <md-card-content layout="column" layout-align="space-between">
+	        	<md-input-container>
+			       	<label>Title</label>
+			       	<input md-autofocus required type="text" ng-model="note.name">
+			  	</md-input-container>
+			  	<md-input-container>
+			       	<label>Note</label>
+			       	<input placeholder="Take a note..." type="text" required ng-model="note.body">
+			  	</md-input-container>
+	        </md-card-content>
+	        <md-card-actions layout="row" layout-align="end center">
+	          	<md-button class="md-primary" type="submit">Done</md-button>
+	        </md-card-actions>
+	    </form>
+    </md-card>
+    <div layout="row" layout-padding class="notesContent">
+    	<md-card flex="33" ng-repeat="notes in noteList" class="hover">
+    		<md-card-title>
+	          	<md-card-title-text layout="row" layout-align="space-between center">
+	          		<div layout="row" layout-align="start center" layout-padding class="nil-vertical-padding">
+	          			<div class="md-headline">{{notes.name}}</div>
+	          			<md-button ng-click="notes.editNote = true;note.name = notes.name;note.body = notes.body;note.id = notes.id;" class="md-primary icon-button mini">
+	          				<i class="fa fa-pencil"></i>
+	          			</md-button>
+	          		</div>
+	            	<md-button ng-click="deleteNote(notes.id, $index)" class="md-primary icon-button mini">
+            			<i class="fa fa-times"></i>
+          			</md-button>
+	          	</md-card-title-text>
+	         </md-card-title>
+			<md-card-content layout="column" layout-align="space-between">
+		        <div ng-show="notes.editNote">
+		        	<md-input-container>
+				       	<label>Title</label>
+				       	<input required type="text" ng-model="note.name">
+				  	</md-input-container>
+				  	<md-input-container>
+				       	<label>Note</label>
+				       	<input placeholder="Take a note..." type="text" required ng-model="note.body">
+				  	</md-input-container>
+				</div>
+				<div ng-hide="notes.editNote">
+					<div class="md-subhead">{{notes.body}}</div>
+		        	<md-chips readonly="true" layout="row" ng-model="notes.labels">
+				      	<md-chip-template>
+					        <span>
+					          <em>{{$chip.name}}</em>
+					        </span>
+				      	</md-chip-template>
+				    </md-chips>
+				</div>
+		     </md-card-content>
+	        <md-card-actions flex>
+	        	<div layout="row" flex layout-padding ng-show="notes.editNote" layout-align="end center">
+	          		<md-button class="md-primary" ng-click="notes.editNote = false;">Cancel</md-button>
+	          		<md-button class="md-primary" type="submit" ng-click="addNote(note, $index)">Done</md-button>
+	          	</div>
+	          	<div layout="row" flex layout-padding ng-hide="notes.editNote" layout-align="start center">
+	          		<md-menu class="nil-vertical-padding" md-offset="0 35">
+		          		<md-button class="md-primary" md-menu-origin ng-click="loadNoteLabelList($mdOpenMenu, $event, notes)">
+		          			Edit Label List
+		          		</md-button>
+		          		<md-menu-content width="3" layout="column" md-offset="0 -30">
+		          			<md-content style="max-height: 210px;">
+			          			<md-list class="nil-vertical-padding nil-horizontal-padding">
+			          				 <md-subheader class="md-no-sticky">Label List</md-subheader>
+				          			 <md-list-item md-no-ink ng-repeat="label in notes.selectedLabelList">
+				          			 	<label>
+											<input type="checkbox" ng-model="label.check" ng-change="toggle(label)"/>
+		                					{{label.name}}	
+		              					</label>
+				  					</md-list-item>
+				  				</md-list>
+				  			</md-content>
+			          		<md-button ng-click="addOrEditLabel(notes.id)" class="md-primary">
+		          				Update
+		          			</md-button>
+			          	</md-menu-content>
+			         </md-menu>
+	          	</div>
+	        </md-card-actions>
+    	</md-card>
+    </div>
+</div>

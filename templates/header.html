@@ -1,0 +1,64 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h3>
+      <md-button ng-click="toggleNav()" class="md-primary icon-button mini" hide-gt-md>
+        <i class="fa fa-bars" ng-click=""></i>
+      </md-button>
+      <span>Notes</span>
+    </h3>
+  </div>
+</md-toolbar>
+<div layout="row">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-content layout="column">
+      <md-list>
+        <md-subheader class="md-sticky">
+          <div layout="row" layout-align="space-between center">
+            <div>Labels</div>
+            <md-button ng-click="createLabel = true;label.name = '';" class="md-primary icon-button mini">
+              <i class="fa fa-plus"></i>
+            </md-button>
+          </div>
+          <form ng-submit="addLabel()" layout="row" layout-align="space-between center" class="full-width" ng-show="createLabel">
+            <md-button ng-click="createLabel = false;" class="md-primary icon-button mini">
+              <i class="fa fa-times"></i>
+            </md-button>
+            <md-input-container class="nil-margin" md-no-float>
+              <input type="text" ng-model="label.name" placeholder="Create new label">
+            </md-input-container>
+            <md-button class="md-primary icon-button mini" type="submit">
+              <i class="fa fa-check"></i>
+            </md-button>
+          </form>
+        </md-subheader>
+        <md-list-item ng-repeat="labels in labelList" ng-class="{active: labels.id == selectedLabelID}" ng-click="selectLabel(labels)">
+          <div layout="row" layout-padding layout-align="space-between center" ng-if="!labels.editLabel" class="full-width nil-vertical-padding hover">
+            <div layout="row" layout-align="start center" layout-padding class="full-width nil-vertical-padding">
+              <div class="nil-vertical-padding">{{labels.name}}</div>
+              <md-button ng-if="labels.id != 0" ng-click="labels.editLabel = true;label.name = labels.name; label.id = labels.id;$event.stopPropagation()" class="md-primary icon-button mini">
+                <i class="fa fa-pencil"></i>
+              </md-button>
+            </div>
+            <md-button ng-if="labels.id != 0" ng-click="deleteLabel($index);$event.stopPropagation();" class="md-primary icon-button mini">
+              <i class="fa fa-trash"></i>
+            </md-button>
+          </div>
+          <form ng-submit="addLabel(label, $index)" ng-if="labels.editLabel" layout-padding layout="row" layout-align="space-between center" class="full-width">
+            <md-button ng-click="labels.editLabel = false;$event.stopPropagation();" class="md-primary icon-button mini">
+              <i class="fa fa-times"></i>
+            </md-button>
+            <md-input-container class="nil-margin" md-no-float>
+              <input type="text" ng-model="label.name" placeholder="Create new label">
+            </md-input-container>
+            <md-button class="md-primary icon-button mini" ng-click="$event.stopPropagation();" type="submit">
+              <i class="fa fa-check"></i>
+            </md-button>
+          </form>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+  <md-content flex class="sideNavContent">
+    <div ui-view></div>
+  </md-content>
+</div>
